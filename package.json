@@ -1,0 +1,37 @@
+{
+	"name": "shulenet-monorepo",
+	"version": "1.0.0",
+	"private": true,
+	"workspaces": [
+		"packages/**",
+		"apps/**"
+	],
+	"scripts": {
+		"build": "turbo run build",
+		"dev": "turbo run dev",
+		"start:dev": "turbo run start:dev",
+		"lint": "turbo run lint",
+		"test": "turbo run test",
+		"test:e2e": "turbo run test:e2e",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\""
+	},
+	"devDependencies": {
+		"eslint-config-custom": "*",
+		"prettier": "latest",
+		"turbo": "^1.10.7"
+	},
+	"engines": {
+		"node": ">=14.0.0"
+	},
+	"dependencies": {
+		"@babel/core": "^7.23.0",
+		"@babel/plugin-transform-runtime": "^7.22.15",
+		"@babel/preset-env": "^7.22.20",
+		"@babel/preset-react": "^7.22.15"
+	},
+	"packageManager": "yarn@1.22.19",
+	"description": "shulenet lms",
+	"main": "index.js",
+	"author": "Juma Antony <jumaantony840@gmail.com>",
+	"license": "MIT"
+}
