@@ -6,6 +6,8 @@ import {
   appConfigsValidator,
   loadAppconfigs,
 } from '@common/config/configurations';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { TransformResponseInterceptors } from '@common/interceptors/response.interceptor';
 
 @Module({
   imports: [
@@ -18,6 +20,9 @@ import {
     AuthModule,
   ],
   controllers: [AppController],
-  providers: [],
+  providers: [{
+    provide : APP_INTERCEPTOR,
+    useClass: TransformResponseInterceptors
+  }],
 })
 export class AppModule {}
