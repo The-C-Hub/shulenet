@@ -1,13 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsEmail,
-  IsNotEmpty,
-  IsString,
-  MinLength,
-  Matches,
-} from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
+import { ValidatePasswordDto } from './validate-password.dto';
 
-export class AuthCredentialsDto {
+export class AuthCredentialsDto extends ValidatePasswordDto {
   @IsNotEmpty()
   @IsString()
   @MinLength(10)
@@ -23,13 +18,4 @@ export class AuthCredentialsDto {
   @IsString()
   @ApiProperty({ example: 'John Doe' })
   fullName: string;
-
-  @IsNotEmpty()
-  @IsString()
-  @MinLength(10)
-  @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/, {
-    message: 'Your Password Is Too Weak',
-  })
-  @ApiProperty({ example: 'password$123' })
-  password: string;
 }

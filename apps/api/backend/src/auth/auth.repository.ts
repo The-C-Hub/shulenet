@@ -4,6 +4,8 @@ import { SupabaseService } from '@common/supabase/supabase.service';
 import { Injectable } from '@nestjs/common';
 import { SupabaseClient } from '@supabase/supabase-js';
 import { AuthCredentialsDto } from '@auth/dto/auth-credentials.dto';
+import { ValidatePasswordDto } from '@auth/dto/validate-password.dto';
+import { ValidateEmailDto } from '@auth/dto/validate-email.dto';
 
 @Injectable()
 export class AuthRepository {
@@ -46,5 +48,34 @@ export class AuthRepository {
       throw new BaseException(error.message, error.status);
     }
     return data;
+  }
+
+  public async emailChangePassword(
+    password: ValidatePasswordDto,
+  ): Promise<void> {
+    const { error } = await this._supabase.auth.updateUser({
+      password: password.password,
+    });
+    if (error) {
+      throw new BaseException(error.message, error.status);
+    }
+  }
+
+  public async emailResetPassword(email: ValidateEmailDto): Promise<any> {
+    const { data, error } = await this._supabase.auth.resetPasswordForEmail(
+      email.email,
+      { redirectTo: 'http://localhost:3000/api#/Auth/AuthController_emailChangePassword'}
+    );
+    if (error) {
+      throw new BaseException(error.message, error.status);
+    }
+    return data;
+  }
+
+  public async signOut(): Promise<void> {
+    const { error } = await this._supabase.auth.signOut();
+    if (error) {
+      throw new BaseException(error.message, error.status);
+    }
   }
 }
