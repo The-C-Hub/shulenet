@@ -20,9 +20,11 @@ import { TransformResponseInterceptors } from '@common/interceptors/response.int
     AuthModule,
   ],
   controllers: [AppController],
-  providers: [{
-    provide : APP_INTERCEPTOR,
-    useClass: TransformResponseInterceptors
-  }],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: TransformResponseInterceptors,
+    },
+  ],
 })
 export class AppModule {}
