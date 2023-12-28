@@ -27,5 +27,5 @@ export const loadAppconfigs = () => ({
     user: process.env.DB_USER,
     port: parseInt(process.env.DB_PORT),
     password: process.env.DB_PASSWORD,
-  }
+  },
 });
