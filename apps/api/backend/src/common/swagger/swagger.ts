@@ -11,7 +11,6 @@ export function configureSwagger(app: INestApplication) {
     .setDescription('API documentation for ShuleNet (V1)')
     .setVersion('v1')
     .addBearerAuth()
-    .addTag('api')
     .build();
 
   const customOptions: SwaggerCustomOptions = {
