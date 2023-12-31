@@ -8,9 +8,12 @@ import {
 } from '@common/config/configurations';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TransformResponseInterceptors } from '@common/interceptors/response.interceptor';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmConfigService } from '@common/typeorm/typeorm.config.service';
 
 @Module({
   imports: [
+    TypeOrmModule.forRootAsync({ useClass: TypeOrmConfigService}),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: `.env/.env.${process.env.NODE_ENV || 'development'}`,
