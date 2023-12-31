@@ -88,7 +88,8 @@ export class AuthController {
   @ApiOperation({ summary: 'Reset password' })
   @ApiResponse({
     status: HttpStatus.CREATED,
-    description: 'A Password Reset Link has been Successfully sent to your email',
+    description:
+      'A Password Reset Link has been Successfully sent to your email',
   })
   public async emailResetPassword(
     @Body() email: ValidateEmailDto,

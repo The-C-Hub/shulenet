@@ -64,7 +64,10 @@ export class AuthRepository {
   public async emailResetPassword(email: ValidateEmailDto): Promise<any> {
     const { data, error } = await this._supabase.auth.resetPasswordForEmail(
       email.email,
-      { redirectTo: 'http://localhost:3000/api#/Auth/AuthController_emailChangePassword'}
+      {
+        redirectTo:
+          'http://localhost:3000/api#/Auth/AuthController_emailChangePassword',
+      },
     );
     if (error) {
       throw new BaseException(error.message, error.status);
