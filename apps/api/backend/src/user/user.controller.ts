@@ -30,19 +30,19 @@ export class UserController {
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Get user details' })
   @ApiResponse({
-	status: HttpStatus.OK,
-	description: 'User details have been successfully retrieved.',
-	content: {
-		'application/json': {
-			example: userResponseExample
-		},
-	},
+    status: HttpStatus.OK,
+    description: 'User details have been successfully retrieved.',
+    content: {
+      'application/json': {
+        example: userResponseExample,
+      },
+    },
   })
   @UseGuards(IsAuthenticatedUserGuard)
   public async getUserDetails(
-	@Param('userId') userId: string,
+    @Param('userId') userId: string,
   ): Promise<Profile> {
-	return await this._userService.findUserById(userId);
+    return await this._userService.findUserById(userId);
   }
 
   @Patch(':userId')
@@ -53,9 +53,9 @@ export class UserController {
     status: HttpStatus.OK,
     description: 'User details have been successfully updated.',
     content: {
-    	'application/json': {
-    		example: userResponseExample
-    	},
+      'application/json': {
+        example: userResponseExample,
+      },
     },
   })
   @UseGuards(IsUserGuard)
