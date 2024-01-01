@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
-import { ValidatePasswordDto } from './validate-password.dto';
+import { ValidatePasswordDto } from '@auth/dto/validate-password.dto';
 
 export class AuthCredentialsDto extends ValidatePasswordDto {
   @IsNotEmpty()

@@ -22,7 +22,7 @@ import {
 import { IUserSignIn } from '@auth/interface/auth.interface';
 import { IUserSignInResponse, IUserSignUpResponse } from '@auth/auth.types';
 import { ValidatePasswordDto } from '@auth/dto/validate-password.dto';
-import { IsAuthenticatedUserGuard } from '@/common/guards/is-authenticated-user.guard';
+import { IsAuthenticatedUserGuard } from '@common/guards/is-authenticated-user.guard';
 import { ValidateEmailDto } from '@auth/dto/validate-email.dto';
 
 @ApiTags('Auth')
@@ -47,7 +47,10 @@ export class AuthController {
     @Body() authCredentialsDto: AuthCredentialsDto,
   ): Promise<IUserSignUpResponse> {
     const is_course_instructor = false;
-    return await this._authService.emailSignup(authCredentialsDto, is_course_instructor);
+    return await this._authService.emailSignup(
+      authCredentialsDto,
+      is_course_instructor,
+    );
   }
 
   @Post('email/login')

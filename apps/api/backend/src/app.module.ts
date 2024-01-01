@@ -22,7 +22,7 @@ import { UserModule } from '@user/user.module';
       validationSchema: appConfigsValidator,
     }),
     AuthModule,
-    UserModule
+    UserModule,
   ],
   controllers: [AppController],
   providers: [
