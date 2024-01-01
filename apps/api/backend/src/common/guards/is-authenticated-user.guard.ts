@@ -1,13 +1,17 @@
 import {
   CanActivate,
   ExecutionContext,
-  ForbiddenException,
+  Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
 import { extractTokenFromHeader } from '@common/token/extract-token';
 import { decodeToken } from '@common/token/decode-token';
+import { UserRepository } from '@user/user.respository';
+import { BaseException } from '@common/exceptions/base.exception';
 
+@Injectable()
 export class IsAuthenticatedUserGuard implements CanActivate {
+  constructor(private readonly _userRepository: UserRepository) {}
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const token = extractTokenFromHeader(request.headers);
@@ -19,14 +23,15 @@ export class IsAuthenticatedUserGuard implements CanActivate {
     try {
       const decodedToken = decodeToken(token);
       const userId = decodedToken.sub;
-      // Write Code to check if the user exists in the database
+      const userData = await this._userRepository.findUserById(userId);
+      const userEmail = userData.email;
       if (userId) {
         request['userId'] = decodedToken.sub;
-        request['email'] = decodedToken.email;
+        request['userEmail'] = userEmail;
         return true;
       }
     } catch (error) {
-      throw new ForbiddenException();
+      throw new BaseException(error.message);
     }
     return false;
   }
