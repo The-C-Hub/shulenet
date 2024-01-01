@@ -10,6 +10,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TransformResponseInterceptors } from '@common/interceptors/response.interceptor';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigService } from '@common/typeorm/typeorm.config.service';
+import { UserModule } from '@user/user.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { TypeOrmConfigService } from '@common/typeorm/typeorm.config.service';
       validationSchema: appConfigsValidator,
     }),
     AuthModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [
