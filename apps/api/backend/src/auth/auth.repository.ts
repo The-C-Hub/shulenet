@@ -5,7 +5,6 @@ import { Injectable } from '@nestjs/common';
 import { SupabaseClient } from '@supabase/supabase-js';
 import { AuthCredentialsDto } from '@auth/dto/auth-credentials.dto';
 import { ValidatePasswordDto } from '@auth/dto/validate-password.dto';
-import { ValidateEmailDto } from '@auth/dto/validate-email.dto';
 
 @Injectable()
 export class AuthRepository {
@@ -61,9 +60,9 @@ export class AuthRepository {
     }
   }
 
-  public async emailResetPassword(email: ValidateEmailDto): Promise<any> {
+  public async emailResetPassword(email: string): Promise<any> {
     const { data, error } = await this._supabase.auth.resetPasswordForEmail(
-      email.email,
+      email,
       {
         redirectTo:
           'http://localhost:3000/api#/Auth/AuthController_emailChangePassword',
