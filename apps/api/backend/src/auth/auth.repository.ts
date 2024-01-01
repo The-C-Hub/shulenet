@@ -17,16 +17,16 @@ export class AuthRepository {
 
   public async emailSignup(
     authCredentialsDto: AuthCredentialsDto,
-    is_student: boolean,
+    isCourseInstructor: boolean,
   ): Promise<IUserSignUpResponse> {
     const { data, error } = await this._supabase.auth.signUp({
       email: authCredentialsDto.email,
       password: authCredentialsDto.password,
       options: {
         data: {
-          fullName: authCredentialsDto.fullName,
+          full_name: authCredentialsDto.fullName,
           username: authCredentialsDto.username,
-          isStudent: is_student,
+          is_course_instructor: isCourseInstructor,
         },
       },
     });

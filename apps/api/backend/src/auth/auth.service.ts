@@ -12,11 +12,11 @@ export class AuthService {
 
   public async emailSignup(
     authCredentialsDto: AuthCredentialsDto,
-    is_student: boolean,
+    isCourseInstructor: boolean,
   ): Promise<IUserSignUpResponse> {
     return await this._authRepository.emailSignup(
       authCredentialsDto,
-      is_student,
+      isCourseInstructor,
     );
   }
 

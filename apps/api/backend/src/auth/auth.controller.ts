@@ -46,8 +46,8 @@ export class AuthController {
   public async studentEmailSignup(
     @Body() authCredentialsDto: AuthCredentialsDto,
   ): Promise<IUserSignUpResponse> {
-    const is_student = true;
-    return await this._authService.emailSignup(authCredentialsDto, is_student);
+    const is_course_instructor = false;
+    return await this._authService.emailSignup(authCredentialsDto, is_course_instructor);
   }
 
   @Post('email/login')
