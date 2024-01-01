@@ -5,10 +5,14 @@ import { IUserSignInResponse, IUserSignUpResponse } from '@auth/auth.types';
 import { IUserSignIn } from '@auth/interface/auth.interface';
 import { ValidatePasswordDto } from '@auth/dto/validate-password.dto';
 import { ValidateEmailDto } from '@auth/dto/validate-email.dto';
+import { UserService } from '@user/user.service';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly _authRepository: AuthRepository) {}
+  constructor(
+    private readonly _authRepository: AuthRepository,
+    private readonly _userService: UserService,
+  ) {}
 
   public async emailSignup(
     authCredentialsDto: AuthCredentialsDto,
@@ -23,7 +27,15 @@ export class AuthService {
   public async emailLogin(
     authCredentials: IUserSignIn,
   ): Promise<IUserSignInResponse> {
-    // find user by username and extract the email address when found and pass it to the emailLogin method
+    if (authCredentials.username) {
+      const userEmail = await this._userService.findUserByUsername(
+        authCredentials.username,
+      );
+      return await this._authRepository.emailLogin(
+        userEmail.email,
+        authCredentials.password,
+      );
+    }
     return await this._authRepository.emailLogin(
       authCredentials.email,
       authCredentials.password,
@@ -37,8 +49,8 @@ export class AuthService {
   }
 
   public async emailResetPassword(email: ValidateEmailDto): Promise<void> {
-    // find user by email address before calling the emailResetPassword method
-    return await this._authRepository.emailResetPassword(email);
+    const userEmail = await this._userService.findUserByEmail(email.email);
+    return await this._authRepository.emailResetPassword(userEmail.email);
   }
 
   public async signOut(): Promise<void> {
