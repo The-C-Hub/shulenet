@@ -20,7 +20,7 @@ export const datasourceConfig: PostgresConnectionOptions = {
   database: process.env.DB_NAME,
   synchronize: false,
   entities: ['dist/**/*.entity.{ts,js}'],
-  migrations: ['dist/db/migrations/*.{ts,js}'],
+  migrations: ['dist/common/db/migrations/*.{ts,js}'],
   maxQueryExecutionTime: 10000,
   logging: ['error', 'warn'],
   logger: 'advanced-console',
