@@ -9,6 +9,7 @@
   "moduleNameMapper": {
     "^@/(.*)$": "<rootDir>/src/$1",
     "^@common/(.*)$": "<rootDir>/src/common/$1",
-    "^@auth/(.*)$": "<rootDir>/src/auth/$1"
+    "^@auth/(.*)$": "<rootDir>/src/auth/$1",
+    "^@users/(.*)$": "<rootDir>/src/users/$1"
   }
 }
