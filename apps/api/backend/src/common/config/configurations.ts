@@ -18,7 +18,7 @@ export const loadAppconfigs = () => ({
   supabase: {
     url: process.env.SUPABASE_API_URL,
     anonApiKey: process.env.SUPABASE_API_KEY,
-    serivceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY,
+    serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY,
     jwtSecret: process.env.SUPABASE_JWT_SECRET,
   },
   db: {

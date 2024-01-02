@@ -5,7 +5,6 @@ import { Injectable } from '@nestjs/common';
 import { SupabaseClient } from '@supabase/supabase-js';
 import { AuthCredentialsDto } from '@auth/dto/auth-credentials.dto';
 import { ValidatePasswordDto } from '@auth/dto/validate-password.dto';
-import { ValidateEmailDto } from '@auth/dto/validate-email.dto';
 
 @Injectable()
 export class AuthRepository {
@@ -17,16 +16,16 @@ export class AuthRepository {
 
   public async emailSignup(
     authCredentialsDto: AuthCredentialsDto,
-    is_student: boolean,
+    isCourseInstructor: boolean,
   ): Promise<IUserSignUpResponse> {
     const { data, error } = await this._supabase.auth.signUp({
       email: authCredentialsDto.email,
       password: authCredentialsDto.password,
       options: {
         data: {
-          fullName: authCredentialsDto.fullName,
+          full_name: authCredentialsDto.fullName,
           username: authCredentialsDto.username,
-          isStudent: is_student,
+          is_course_instructor: isCourseInstructor,
         },
       },
     });
@@ -61,10 +60,13 @@ export class AuthRepository {
     }
   }
 
-  public async emailResetPassword(email: ValidateEmailDto): Promise<any> {
+  public async emailResetPassword(email: string): Promise<any> {
     const { data, error } = await this._supabase.auth.resetPasswordForEmail(
-      email.email,
-      { redirectTo: 'http://localhost:3000/api#/Auth/AuthController_emailChangePassword'}
+      email,
+      {
+        redirectTo:
+          'http://localhost:3000/api#/Auth/AuthController_emailChangePassword',
+      },
     );
     if (error) {
       throw new BaseException(error.message, error.status);

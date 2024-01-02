@@ -10,10 +10,12 @@ import { UserRepository } from '@user/user.respository';
 import { BaseException } from '@common/exceptions/base.exception';
 
 @Injectable()
-export class IsAuthenticatedUserGuard implements CanActivate {
+export class IsUserGuard implements CanActivate {
   constructor(private readonly _userRepository: UserRepository) {}
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
+    // extract userId from request params
+    const userIdParam = request.params.userId;
     const token = extractTokenFromHeader(request.headers);
     if (!token) {
       throw new UnauthorizedException(
@@ -25,7 +27,8 @@ export class IsAuthenticatedUserGuard implements CanActivate {
       const userId = decodedToken.sub;
       const userData = await this._userRepository.findUserById(userId);
       const userEmail = userData.email;
-      if (userId) {
+      // compare userId from token with userId from request params
+      if (userId === userIdParam) {
         request['userId'] = decodedToken.sub;
         request['userEmail'] = userEmail;
         return true;

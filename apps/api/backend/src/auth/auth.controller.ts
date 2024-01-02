@@ -22,7 +22,7 @@ import {
 import { IUserSignIn } from '@auth/interface/auth.interface';
 import { IUserSignInResponse, IUserSignUpResponse } from '@auth/auth.types';
 import { ValidatePasswordDto } from '@auth/dto/validate-password.dto';
-import { IsAuthenticatedUserGuard } from '@/common/guards/is-authenticated-user.guard';
+import { IsAuthenticatedUserGuard } from '@common/guards/is-authenticated-user.guard';
 import { ValidateEmailDto } from '@auth/dto/validate-email.dto';
 
 @ApiTags('Auth')
@@ -46,8 +46,11 @@ export class AuthController {
   public async studentEmailSignup(
     @Body() authCredentialsDto: AuthCredentialsDto,
   ): Promise<IUserSignUpResponse> {
-    const is_student = true;
-    return await this._authService.emailSignup(authCredentialsDto, is_student);
+    const is_course_instructor = false;
+    return await this._authService.emailSignup(
+      authCredentialsDto,
+      is_course_instructor,
+    );
   }
 
   @Post('email/login')
@@ -88,7 +91,8 @@ export class AuthController {
   @ApiOperation({ summary: 'Reset password' })
   @ApiResponse({
     status: HttpStatus.CREATED,
-    description: 'A Password Reset Link has been Successfully sent to your email',
+    description:
+      'A Password Reset Link has been Successfully sent to your email',
   })
   public async emailResetPassword(
     @Body() email: ValidateEmailDto,

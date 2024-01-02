@@ -12,8 +12,8 @@ const userEmailAuthResponse = {
     providers: ['email'],
   },
   user_metadata: {
-    fullName: 'John Doe',
-    isStudent: true,
+    full_name: 'John Doe',
+    is_course_instructor: false,
     username: 'JohnDoe',
   },
   identities: [
