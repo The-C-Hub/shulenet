@@ -24,6 +24,10 @@ export class AuthService {
     );
   }
 
+  public async resendConfirmationLink(email: string): Promise<any> {
+    await this._authRepository.resendConfirmationLink(email);
+  }
+
   public async emailLogin(
     authCredentials: IUserSignIn,
   ): Promise<IUserSignInResponse> {
