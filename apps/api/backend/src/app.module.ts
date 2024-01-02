@@ -11,6 +11,7 @@ import { TransformResponseInterceptors } from '@common/interceptors/response.int
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigService } from '@common/typeorm/typeorm.config.service';
 import { UserModule } from '@user/user.module';
+import { MediaModule } from '@common/media/media.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { UserModule } from '@user/user.module';
     }),
     AuthModule,
     UserModule,
+    MediaModule
   ],
   controllers: [AppController],
   providers: [
