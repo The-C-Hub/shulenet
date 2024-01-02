@@ -65,7 +65,6 @@ export class UserController {
   @ApiResponse({
     status: HttpStatus.OK,
     description: 'User details have been successfully updated.',
-    type: UpdateUserDetailsDto,
     content: {
       'application/json': {
         example: userResponseExample,
