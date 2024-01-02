@@ -35,6 +35,16 @@ export class AuthRepository {
     return data;
   }
 
+  public async resendConfirmationLink(email: string): Promise<any> {
+    const { error } = await this._supabase.auth.resend({
+      type: 'signup',
+      email,
+    });
+    if (error) {
+      throw new BaseException(error.message, error.status);
+    }
+  }
+
   public async emailLogin(
     email: string,
     password: string,

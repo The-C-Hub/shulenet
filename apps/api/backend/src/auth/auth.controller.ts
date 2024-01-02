@@ -53,6 +53,21 @@ export class AuthController {
     );
   }
 
+  @Post('resend-confirmation-link')
+  @ApiOperation({ summary: 'Resend confirmation link' })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'The confirmation link has been successfully sent.',
+  })
+  public async resendConfirmationLink(
+    @Body() email: ValidateEmailDto,
+  ): Promise<{ message: string }> {
+    await this._authService.resendConfirmationLink(email.email);
+    return {
+      message: 'Confirmation Link Sent Successfully',
+    };
+  }
+
   @Post('email/login')
   @ApiOperation({ summary: 'Login with email/username and password' })
   @ApiResponse({
