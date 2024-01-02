@@ -71,7 +71,7 @@ export class AuthController {
   }
 
   @Patch('email/change-password')
-  @ApiOperation({ summary: 'Change password the password' })
+  @ApiOperation({ summary: 'Change password' })
   @ApiResponse({
     status: HttpStatus.OK,
     description: 'The user password has been successfully changed.',
