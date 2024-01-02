@@ -7,10 +7,7 @@ import { Profile } from '@user/entities/profile.entity';
 import { MediaModule } from '@common/media/media.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([Profile]),
-    MediaModule,
-  ],
+  imports: [TypeOrmModule.forFeature([Profile]), MediaModule],
   providers: [UserService, UserRepository],
   controllers: [UserController],
   exports: [UserService, UserRepository],

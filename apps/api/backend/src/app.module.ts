@@ -24,7 +24,7 @@ import { MediaModule } from '@common/media/media.module';
     }),
     AuthModule,
     UserModule,
-    MediaModule
+    MediaModule,
   ],
   controllers: [AppController],
   providers: [

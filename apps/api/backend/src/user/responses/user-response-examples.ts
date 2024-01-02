@@ -19,9 +19,10 @@ export const userResponseExample = {
 export const userProfileUploadResponse = {
   statusCode: HttpStatus.OK,
   data: {
-    path: "e25a3c7d-c1ce-474d-a19a-375a1f298a21",
-    id: "b21d29d9-44b5-4769-b62e-67f1204c027d",
-    fullPath: "profile_photos/e25a3c7d-c1ce-474d-a19a-375a1f298a21",
-    publicUrl: "https://bhnawovfgphuzdbvllup.supabase.co/storage/v1/object/public/profile_photos/e25a3c7d-c1ce-474d-a19a-375a1f298a21"
-  }
-}
+    path: 'e25a3c7d-c1ce-474d-a19a-375a1f298a21',
+    id: 'b21d29d9-44b5-4769-b62e-67f1204c027d',
+    fullPath: 'profile_photos/e25a3c7d-c1ce-474d-a19a-375a1f298a21',
+    publicUrl:
+      'https://bhnawovfgphuzdbvllup.supabase.co/storage/v1/object/public/profile_photos/e25a3c7d-c1ce-474d-a19a-375a1f298a21',
+  },
+};

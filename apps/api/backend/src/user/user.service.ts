@@ -9,7 +9,7 @@ export class UserService {
   constructor(
     private readonly _userRepository: UserRepository,
     private readonly _mediaService: MediaService,
-    ) {}
+  ) {}
 
   public async findUserByUsername(username: string): Promise<Profile> {
     return await this._userRepository.findUserByUsername(username);
