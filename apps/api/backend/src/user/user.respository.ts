@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Profile } from '@user/entities/profile.entity';
 import { Repository } from 'typeorm';
-import { UpdateUserDetailsDto } from '@user/dto/update-user-details.dto';
+import { IUserUpdate } from '@user/interface/user.interface';
 
 @Injectable()
 export class UserRepository {
@@ -53,7 +53,7 @@ export class UserRepository {
 
   public async updateUserDetails(
     userId: string,
-    updateUserDetailsDto: Partial<UpdateUserDetailsDto>,
+    updateUserDetailsDto: Partial<IUserUpdate>,
   ): Promise<Profile> {
     try {
       const updatedProfile = await this._userRepository.preload({
