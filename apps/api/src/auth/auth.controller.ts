@@ -19,11 +19,12 @@ import {
   EmailSignInResponseExample,
   studentEmailSignUpResponseExample,
 } from '@auth/responses/email-auth-response-examples';
-import { IUserSignIn } from '@auth/interface/auth.interface';
+import { IUserAdditionalInfo, IUserSignIn } from '@auth/interface/auth.interface';
 import { IUserSignInResponse, IUserSignUpResponse } from '@auth/auth.types';
 import { ValidatePasswordDto } from '@auth/dto/validate-password.dto';
 import { IsAuthenticatedUserGuard } from '@common/guards/is-authenticated-user.guard';
 import { ValidateEmailDto } from '@auth/dto/validate-email.dto';
+import { IsAdminGuard } from '@common/guards/is-admin.guard';
 
 @ApiTags('Auth')
 @ApiBearerAuth()
@@ -46,10 +47,12 @@ export class AuthController {
   public async studentEmailSignup(
     @Body() authCredentialsDto: AuthCredentialsDto,
   ): Promise<IUserSignUpResponse> {
-    const is_course_instructor = false;
+    const userAddionalInfo: IUserAdditionalInfo = {
+      is_course_instructor : false,
+    }
     return await this._authService.emailSignup(
       authCredentialsDto,
-      is_course_instructor,
+      userAddionalInfo,
     );
   }
 
@@ -130,6 +133,48 @@ export class AuthController {
     await this._authService.signOut();
     return {
       message: 'Sign out Successful',
+    };
+  }
+
+  @Post('admin/email/signup')
+  @ApiOperation({ summary: 'Sign up with email and password' })
+  @ApiBody({ type: AuthCredentialsDto })
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    description: 'The user has been successfully signed up.',
+    content: {
+      'application/json': {
+        example: studentEmailSignUpResponseExample,
+      },
+    },
+  })
+  public async adminEmailSignup(
+    @Body() authCredentialsDto: AuthCredentialsDto,
+  ): Promise<IUserSignUpResponse> {
+    const userAddionalInfo: IUserAdditionalInfo = {
+      is_admin : 'service_role',
+      is_course_instructor : false,
+    }
+    return await this._authService.emailSignup(
+      authCredentialsDto,
+      userAddionalInfo,
+    );
+  }
+
+  @Post('admin/instructor/email-invite')
+  @ApiOperation({ summary: 'Invite instructor by email' })
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    description: 'The user has been successfully invited.',
+  })
+  @UseGuards(IsAdminGuard)
+  @ApiBearerAuth()
+  public async instructorSendEmailInvite(
+    @Body() email: ValidateEmailDto,
+  ): Promise<{ message: string }> {
+    await this._authService.instructorSendEmailInvite(email.email);
+    return {
+      message: 'Instructor Invite Sent Successfully',
     };
   }
 }
