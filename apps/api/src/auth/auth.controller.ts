@@ -19,7 +19,10 @@ import {
   EmailSignInResponseExample,
   studentEmailSignUpResponseExample,
 } from '@auth/responses/email-auth-response-examples';
-import { IUserAdditionalInfo, IUserSignIn } from '@auth/interface/auth.interface';
+import {
+  IUserAdditionalInfo,
+  IUserSignIn,
+} from '@auth/interface/auth.interface';
 import { IUserSignInResponse, IUserSignUpResponse } from '@auth/auth.types';
 import { ValidatePasswordDto } from '@auth/dto/validate-password.dto';
 import { IsAuthenticatedUserGuard } from '@common/guards/is-authenticated-user.guard';
@@ -48,8 +51,8 @@ export class AuthController {
     @Body() authCredentialsDto: AuthCredentialsDto,
   ): Promise<IUserSignUpResponse> {
     const userAddionalInfo: IUserAdditionalInfo = {
-      is_course_instructor : false,
-    }
+      is_course_instructor: false,
+    };
     return await this._authService.emailSignup(
       authCredentialsDto,
       userAddionalInfo,
@@ -152,9 +155,9 @@ export class AuthController {
     @Body() authCredentialsDto: AuthCredentialsDto,
   ): Promise<IUserSignUpResponse> {
     const userAddionalInfo: IUserAdditionalInfo = {
-      is_admin : 'service_role',
-      is_course_instructor : false,
-    }
+      is_admin: 'service_role',
+      is_course_instructor: false,
+    };
     return await this._authService.emailSignup(
       authCredentialsDto,
       userAddionalInfo,

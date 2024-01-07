@@ -2,7 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { AuthRepository } from '@auth/auth.repository';
 import { AuthCredentialsDto } from '@auth/dto/auth-credentials.dto';
 import { IUserSignInResponse, IUserSignUpResponse } from '@auth/auth.types';
-import { IUserAdditionalInfo, IUserSignIn } from '@auth/interface/auth.interface';
+import {
+  IUserAdditionalInfo,
+  IUserSignIn,
+} from '@auth/interface/auth.interface';
 import { ValidatePasswordDto } from '@auth/dto/validate-password.dto';
 import { ValidateEmailDto } from '@auth/dto/validate-email.dto';
 import { UserService } from '@user/user.service';

@@ -60,15 +60,14 @@ export class AuthRepository {
   }
 
   public async instructorSendEmailInvite(email: string): Promise<any> {
-    const { data, error } = await this._supabaseAdmin.auth.admin.inviteUserByEmail(
-      email,
-      {
+    const { data, error } =
+      await this._supabaseAdmin.auth.admin.inviteUserByEmail(email, {
         data: {
           is_course_instructor: true,
         },
-        redirectTo: 'http://localhost:3001/api#/Auth/AuthController_emailChangePassword',
-      },
-    );
+        redirectTo:
+          'http://localhost:3001/api#/Auth/AuthController_emailChangePassword',
+      });
     if (error) {
       throw new BaseException(error.message, error.status);
     }
