@@ -165,7 +165,7 @@ export class AuthController {
   @ApiOperation({ summary: 'Invite instructor by email' })
   @ApiResponse({
     status: HttpStatus.CREATED,
-    description: 'The user has been successfully invited.',
+    description: 'Instructor Invite Sent Successfully',
   })
   @UseGuards(IsAdminGuard)
   @ApiBearerAuth()
