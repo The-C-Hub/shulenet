@@ -1,18 +1,40 @@
-import React from 'react'
+import React from 'react';
+import Logo from './Group 3 1.svg'; // Adjust the path based on your file structure
 
-export default function Header() {
+const Header = () => {
   return (
-    <div className="w-[1512px] h-28 bg-black">
+    <div className="container mx-auto h-20 bg-black flex items-center justify-between">
+      <div className="flex items-center space-x-4"> 
+      <div className="w-4" />
+        <img src={Logo} alt="Logo" className="w-20 h-20" /> 
         <div className="w-[138.75px] h-[43.83px] relative flex-col justify-start items-start inline-flex" />
-        <div className="w-14 h-[20.45px] text-white text-base font-bold font-['KoHo']">Courses</div>
-        <div className="w-[55px] h-[20.45px] text-white text-base font-bold font-['KoHo']">Why Us</div>
-        <div className="w-[153px] h-[20.45px] text-white text-base font-bold font-['KoHo']">Become an Instructor</div>
-        <div className="w-[118px] h-12 bg-white rounded-lg border border-blue-700">
-        <div className="w-[50px] h-[21px] text-sky-950 text-base font-semibold font-['KoHo']">Sign In</div>
-        </div>
-        <div className="w-[118px] h-12 bg-sky-950 rounded-lg">
-        <div className="w-[57px] h-[21px] text-yellow-400 text-base font-semibold font-['KoHo']">Sign Up</div>
-        </div>
-        </div>
-  )
-}
+        <NavItem text="Courses" />
+        <NavItem text="Why Us" />
+      </div>
+      <div className="flex space-x-4 items-center"> 
+      <NavItem text="Become an Instructor" />
+
+        <AuthButton text="Sign In" bgColor="bg-white" textColor="text-sky-950" />
+        <AuthButton text="Sign Up" bgColor="bg-sky-950" textColor="text-yellow-400" />
+        <div className="w-4" /> 
+      </div>
+    </div>
+  );
+};
+
+const NavItem = ({ text }) => (
+  <div className={`text-white text-sm font-bold font-KoHo`}>{text}</div>
+);
+
+const AuthButton = ({ text, bgColor, textColor }) => (
+  <div className="w-[118px] h-12 relative">
+    <div className={`w-[118px] h-12 left-0 top-0 absolute ${bgColor} rounded-lg`} />
+    <div
+      className={`w-[50px] h-[21px] left-[34px] top-[13.60px] absolute ${textColor} text-sm font-semibold font-['KoHo']`}
+    >
+      {text}
+    </div>
+  </div>
+);
+
+export default Header;
