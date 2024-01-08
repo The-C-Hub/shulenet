@@ -40,7 +40,7 @@ export class UserService {
     file: Express.Multer.File,
   ): Promise<any> {
     await this._userRepository.findUserById(userId);
-    const response = await this._mediaService.uploadProfileImage(
+    const response = await this._mediaService.uploadImage(
       userId,
       storageBucketName,
       file,
