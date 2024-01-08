@@ -2,7 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { AuthRepository } from '@auth/auth.repository';
 import { AuthCredentialsDto } from '@auth/dto/auth-credentials.dto';
 import { IUserSignInResponse, IUserSignUpResponse } from '@auth/auth.types';
-import { IUserSignIn } from '@auth/interface/auth.interface';
+import {
+  IUserAdditionalInfo,
+  IUserSignIn,
+} from '@auth/interface/auth.interface';
 import { ValidatePasswordDto } from '@auth/dto/validate-password.dto';
 import { ValidateEmailDto } from '@auth/dto/validate-email.dto';
 import { UserService } from '@user/user.service';
@@ -16,11 +19,17 @@ export class AuthService {
 
   public async emailSignup(
     authCredentialsDto: AuthCredentialsDto,
-    isCourseInstructor: boolean,
+    userAddionalInfo: IUserAdditionalInfo,
   ): Promise<IUserSignUpResponse> {
+    if (userAddionalInfo.is_admin) {
+      return await this._authRepository.adminEmailSignup(
+        authCredentialsDto,
+        userAddionalInfo,
+      );
+    }
     return await this._authRepository.emailSignup(
       authCredentialsDto,
-      isCourseInstructor,
+      userAddionalInfo,
     );
   }
 
@@ -59,5 +68,9 @@ export class AuthService {
 
   public async signOut(): Promise<void> {
     return await this._authRepository.signOut();
+  }
+
+  public async instructorSendEmailInvite(email: string): Promise<any> {
+    return await this._authRepository.instructorSendEmailInvite(email);
   }
 }

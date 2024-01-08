@@ -19,3 +19,8 @@ export class IUserSignIn {
   })
   password: string;
 }
+
+export interface IUserAdditionalInfo {
+  is_course_instructor?: boolean;
+  is_admin?: string;
+}
