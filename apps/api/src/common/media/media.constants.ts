@@ -6,3 +6,4 @@ export const ALLOWED_PROFILE_PHOTO_MIME_TYPES = [
   'image/jpg',
 ];
 export const PROFILE_PHOTO_STORAGE_BUCKET_NAME = 'profile_photos';
+export const SUBJECT_FEATURE_IMAGE_STORAGE_BUCKET_NAME = 'subject_feature_img';
