@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { SubjectRepository } from '@course/repositories/subject.repository';
-import { CreateSubjectDto } from '@course/dto/subject.dto';
-import { Subject } from '@course/entities/subject.entity';
+import { SubjectRepository } from '@subject/subject.repository';
+import { CreateSubjectDto } from '@subject/dto/subject.dto';
+import { Subject } from '@subject/entities/subject.entity';
 import { MediaService } from '@common/media/media.service';
-import { ISubjectUpdate } from '@course/interface/subject.interface';
+import { ISubjectUpdate } from '@subject/interface/subject.interface';
 
 @Injectable()
-export class CourseService {
+export class SubjectService {
   constructor(
     private readonly _subjectRepository: SubjectRepository,
     private readonly _mediaService: MediaService,

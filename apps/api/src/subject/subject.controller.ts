@@ -13,7 +13,7 @@ import {
   UploadedFile,
   UseGuards,
 } from '@nestjs/common';
-import { CourseService } from '@course/course.service';
+import { SubjectService } from '@subject/subject.service';
 import {
   ApiBearerAuth,
   ApiBody,
@@ -22,13 +22,13 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { IsAdminGuard } from '@common/guards/is-admin.guard';
-import { CreateSubjectDto } from '@course/dto/subject.dto';
-import { Subject } from '@course/entities/subject.entity';
+import { CreateSubjectDto } from '@subject/dto/subject.dto';
+import { Subject } from '@subject/entities/subject.entity';
 import {
   allSubjectsResponseExample,
   createSubjectResponseExample,
   subjectFeatureImageResponseExample,
-} from '@course/responses/subject-response-examples';
+} from '@subject/responses/subject-response-examples';
 import { MediaUpload } from '@common/media/decorators/media-upload.decorators';
 import {
   ALLOWED_PROFILE_PHOTO_MIME_TYPES,
@@ -36,14 +36,14 @@ import {
   SUBJECT_FEATURE_IMAGE_STORAGE_BUCKET_NAME,
 } from '@common/media/media.constants';
 import { UploadFileTypeValidator } from '@common/media/media.validators';
-import { ISubjectUpdate } from '@course/interface/subject.interface';
+import { ISubjectUpdate } from '@subject/interface/subject.interface';
 
-@ApiTags('Course')
-@Controller({ path: 'course', version: '1' })
-export class CourseController {
-  constructor(private readonly _courseService: CourseService) {}
+@ApiTags('Subject')
+@Controller({ path: 'subject', version: '1' })
+export class SubjectController {
+  constructor(private readonly _courseService: SubjectService) {}
 
-  @Post('/subject')
+  @Post()
   @HttpCode(HttpStatus.CREATED)
   @ApiBearerAuth()
   @ApiOperation({
@@ -71,7 +71,7 @@ export class CourseController {
     return response;
   }
 
-  @Patch('/subject/feature-img/:subjectId')
+  @Patch('/feature-img/:subjectId')
   @HttpCode(HttpStatus.OK)
   @ApiBearerAuth()
   @ApiOperation({
@@ -111,7 +111,7 @@ export class CourseController {
     return response;
   }
 
-  @Get('/subject')
+  @Get()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
     summary:
@@ -131,7 +131,7 @@ export class CourseController {
     return response;
   }
 
-  @Patch('/subject/:subjectId')
+  @Patch(':subjectId')
   @HttpCode(HttpStatus.OK)
   @ApiBearerAuth()
   @ApiOperation({
@@ -159,7 +159,7 @@ export class CourseController {
     return response;
   }
 
-  @Delete('/subject/:subjectId')
+  @Delete(':subjectId')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiBearerAuth()
   @ApiOperation({

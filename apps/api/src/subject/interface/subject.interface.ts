@@ -1,4 +1,4 @@
-import { CreateSubjectDto } from '@course/dto/subject.dto';
+import { CreateSubjectDto } from '@subject/dto/subject.dto';
 
 export interface ISubjectUpdate {
   subjectDto?: CreateSubjectDto;

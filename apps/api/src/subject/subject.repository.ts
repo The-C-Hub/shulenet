@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Subject } from '@course/entities/subject.entity';
+import { Subject } from '@subject/entities/subject.entity';
 import { Repository } from 'typeorm';
 import { BaseException } from '@common/exceptions/base.exception';
-import { CreateSubjectDto } from '@course/dto/subject.dto';
-import { ISubjectUpdate } from '@course/interface/subject.interface';
+import { CreateSubjectDto } from '@subject/dto/subject.dto';
+import { ISubjectUpdate } from '@subject/interface/subject.interface';
 
 @Injectable()
 export class SubjectRepository {
