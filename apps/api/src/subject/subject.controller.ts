@@ -27,6 +27,7 @@ import { Subject } from '@subject/entities/subject.entity';
 import {
   allSubjectsResponseExample,
   createSubjectResponseExample,
+  subjectDetailResponseExample,
   subjectFeatureImageResponseExample,
 } from '@subject/responses/subject-response-examples';
 import { MediaUpload } from '@common/media/decorators/media-upload.decorators';
@@ -68,6 +69,28 @@ export class SubjectController {
       subjectDto,
       userId,
     );
+    return response;
+  }
+
+  @Get(':subjectId')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary:
+      'Get a subject by id  -  Anyone Can Get a Subject, Authenticated or Not',
+  })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'The subject has been successfully retreived',
+    content: {
+      'application/json': {
+        example: subjectDetailResponseExample,
+      },
+    },
+  })
+  public async getSubjectById(
+    @Param('subjectId') subjectId: string,
+  ): Promise<Subject> {
+    const response = await this._courseService.getSubjectById(subjectId);
     return response;
   }
 

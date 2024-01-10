@@ -26,6 +26,11 @@ export class SubjectService {
     return createdSubject;
   }
 
+  public async getSubjectById(subjectId: string): Promise<Subject> {
+    const response = await this._subjectRepository.getSubjectById(subjectId);
+    return response;
+  }
+
   public async updloadSubjectFeatureImg(
     subjectId: string,
     storageBucketName: string,
