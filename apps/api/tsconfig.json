@@ -23,6 +23,7 @@
       "@auth/*": ["src/auth/*"],
       "@user/*": ["src/user/*"],
       "@subject/*": ["src/subject/*"],
+      "@course/*": ["src/course/*"],
     }
   }
 }

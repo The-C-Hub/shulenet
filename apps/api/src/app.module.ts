@@ -13,6 +13,7 @@ import { TypeOrmConfigService } from '@common/typeorm/typeorm.config.service';
 import { UserModule } from '@user/user.module';
 import { MediaModule } from '@common/media/media.module';
 import { SubjectModule } from '@subject/subject.module';
+import { CourseModule } from '@course/course.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { SubjectModule } from '@subject/subject.module';
     UserModule,
     MediaModule,
     SubjectModule,
+    CourseModule,
   ],
   controllers: [AppController],
   providers: [
