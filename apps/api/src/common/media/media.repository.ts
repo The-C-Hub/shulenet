@@ -13,7 +13,7 @@ export class MediaRepository {
     this._supabase = _supabaseClientFactory.createAdminClient();
   }
 
-  public async uploadProfileImage(
+  public async uploadImageFile(
     fileName: string,
     storageBucketName: string,
     file: Express.Multer.File,

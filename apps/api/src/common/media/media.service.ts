@@ -6,12 +6,12 @@ import { IUploadMediaResponse } from '@common/media/media.types';
 export class MediaService {
   constructor(private readonly _mediaRepository: MediaRepository) {}
 
-  public async uploadProfileImage(
+  public async uploadImage(
     fileName: string,
     storageBucketName: string,
     file: Express.Multer.File,
   ): Promise<IUploadMediaResponse> {
-    const response = await this._mediaRepository.uploadProfileImage(
+    const response = await this._mediaRepository.uploadImageFile(
       fileName,
       storageBucketName,
       file,

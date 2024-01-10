@@ -86,7 +86,8 @@
       "^@/(.*)$": "<rootDir>/$1",
       "^@common/(.*)$": "<rootDir>/../common/$1",
       "^@auth/(.*)$": "<rootDir>/../src/auth/$1",
-      "^@user/(.*)$": "<rootDir>/../src/user/$1"
+      "^@user/(.*)$": "<rootDir>/../src/user/$1",
+      "^@subject/(.*)$": "<rootDir>/../src/subject/$1"
     }
   }
 }

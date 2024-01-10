@@ -12,6 +12,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigService } from '@common/typeorm/typeorm.config.service';
 import { UserModule } from '@user/user.module';
 import { MediaModule } from '@common/media/media.module';
+import { SubjectModule } from '@subject/subject.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { MediaModule } from '@common/media/media.module';
     AuthModule,
     UserModule,
     MediaModule,
+    SubjectModule,
   ],
   controllers: [AppController],
   providers: [
