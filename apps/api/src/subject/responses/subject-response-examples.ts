@@ -35,7 +35,7 @@ export const allSubjectsResponseExample = {
 };
 
 export const subjectFeatureImageResponseExample = {
-  statusCode: HttpStatus.OK,
+  statusCode: HttpStatus.CREATED,
   data: {
     path: '12c9bf04-9f76-4b3e-8048-09b3ff51ca49',
     id: '3bdd48f6-ed66-4066-b1b8-4e114593cf85',

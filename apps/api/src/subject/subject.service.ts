@@ -56,7 +56,7 @@ export class SubjectService {
       subjectId,
       subjectDto,
     );
-    return response;
+    return this._subjectRepository.getSubjectById(response.id);
   }
 
   public async getAllSubjects(): Promise<Subject[]> {

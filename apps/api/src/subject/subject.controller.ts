@@ -38,6 +38,7 @@ import {
 } from '@common/media/media.constants';
 import { UploadFileTypeValidator } from '@common/media/media.validators';
 import { ISubjectUpdate } from '@subject/interface/subject.interface';
+import { ImageUploadResponse } from '@common/media/media.types';
 
 @ApiTags('Subject')
 @Controller({ path: 'subject', version: '1' })
@@ -94,12 +95,12 @@ export class SubjectController {
     return response;
   }
 
-  @Patch('/feature-img/:subjectId')
-  @HttpCode(HttpStatus.OK)
+  @Post('/feature-img/:subjectId')
+  @HttpCode(HttpStatus.CREATED)
   @ApiBearerAuth()
   @ApiOperation({
     summary:
-      'Update a subject feature image  -  Only Admins Can Upload a Subject FeatureImg',
+      'Upload a subject feature image  -  Only Admins Can Upload a Subject FeatureImg',
   })
   @ApiResponse({
     status: HttpStatus.OK,
@@ -125,7 +126,7 @@ export class SubjectController {
         .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
     )
     subjectFeatureImg: Express.Multer.File,
-  ): Promise<Subject> {
+  ): Promise<ImageUploadResponse> {
     const response = await this._courseService.uploadSubjectFeatureImg(
       subjectId,
       SUBJECT_FEATURE_IMAGE_STORAGE_BUCKET_NAME,
@@ -166,7 +167,7 @@ export class SubjectController {
     description: 'The subject has been successfully updated',
     content: {
       'application/json': {
-        example: createSubjectResponseExample,
+        example: subjectDetailResponseExample,
       },
     },
   })
