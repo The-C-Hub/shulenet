@@ -31,7 +31,7 @@ export class SubjectService {
     return response;
   }
 
-  public async updloadSubjectFeatureImg(
+  public async uploadSubjectFeatureImg(
     subjectId: string,
     storageBucketName: string,
     file: Express.Multer.File,

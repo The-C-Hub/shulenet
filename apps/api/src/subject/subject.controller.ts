@@ -126,7 +126,7 @@ export class SubjectController {
     )
     subjectFeatureImg: Express.Multer.File,
   ): Promise<Subject> {
-    const response = await this._courseService.updloadSubjectFeatureImg(
+    const response = await this._courseService.uploadSubjectFeatureImg(
       subjectId,
       SUBJECT_FEATURE_IMAGE_STORAGE_BUCKET_NAME,
       subjectFeatureImg,
