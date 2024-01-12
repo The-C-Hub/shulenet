@@ -71,7 +71,7 @@ export class CourseController {
     return response;
   }
 
-  @Post(':courseId/feature-img/:courseId')
+  @Post('feature-img/:courseId')
   @HttpCode(HttpStatus.CREATED)
   @ApiBearerAuth()
   @ApiOperation({
