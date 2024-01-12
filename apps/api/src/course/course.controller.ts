@@ -39,6 +39,7 @@ import { UploadFileTypeValidator } from '@common/media/media.validators';
 import { ICourseUpdate } from '@course/interface/course.interface';
 import { MediaUpload } from '@common/media/decorators/media-upload.decorators';
 import { IsCourseOwnerGuard } from '@common/guards/is-course-owner.guard';
+import { IsAuthenticatedUserGuard } from '@common/guards/is-authenticated-user.guard';
 
 @ApiTags('Course')
 @Controller({ path: 'course', version: '1' })
@@ -132,6 +133,7 @@ export class CourseController {
 
   @Get(':courseId')
   @HttpCode(HttpStatus.OK)
+  @ApiBearerAuth()
   @ApiOperation({
     summary: 'Get a course by id  -  Anyone can view course details',
   })
@@ -144,6 +146,7 @@ export class CourseController {
       },
     },
   })
+  @UseGuards(IsAuthenticatedUserGuard)
   public async getCourseById(
     @Param('courseId') courseId: string,
   ): Promise<Course> {
