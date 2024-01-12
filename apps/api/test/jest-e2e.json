@@ -12,6 +12,7 @@
     "^@auth/(.*)$": "<rootDir>/src/auth/$1",
     "^@users/(.*)$": "<rootDir>/src/users/$1",
     "^@subject/(.*)$": "<rootDir>/src/subject/$1",
-    "^@course/(.*)$": "<rootDir>/src/course/$1"
+    "^@course/(.*)$": "<rootDir>/src/course/$1",
+    "^@lesson/(.*)$": "<rootDir>/src/lesson/$1"
   }
 }

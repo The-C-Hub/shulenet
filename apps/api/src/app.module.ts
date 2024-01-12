@@ -14,6 +14,7 @@ import { UserModule } from '@user/user.module';
 import { MediaModule } from '@common/media/media.module';
 import { SubjectModule } from '@subject/subject.module';
 import { CourseModule } from '@course/course.module';
+import { LessonModule } from '@lesson/lesson.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { CourseModule } from '@course/course.module';
     MediaModule,
     SubjectModule,
     CourseModule,
+    LessonModule,
   ],
   controllers: [AppController],
   providers: [
