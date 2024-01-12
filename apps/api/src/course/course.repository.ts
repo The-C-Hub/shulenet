@@ -34,7 +34,7 @@ export class CourseRepository {
     try {
       const course = await this._courseRepository.findOneOrFail({
         where: { id: courseId },
-        relations: ['subject', 'creator'],
+        relations: ['subject', 'creator', 'lessons'],
       });
       return course;
     } catch (error) {

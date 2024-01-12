@@ -6,10 +6,12 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
+import { Lesson } from '@/lesson/entities/lesson.entity';
 
 @Entity({ name: 'courses' })
 @Unique(['title'])
@@ -41,6 +43,9 @@ export class Course {
     foreignKeyConstraintName: 'fk_course_subject_id',
   })
   subject: Subject;
+
+  @OneToMany(() => Lesson, (lesson) => lesson.course)
+  lessons: Lesson[];
 
   @CreateDateColumn({ type: 'timestamptz' })
   created_at: Date;
