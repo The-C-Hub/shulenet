@@ -34,7 +34,6 @@ export class IsCourseOwnerGuard implements CanActivate {
       const courseOwner = userData.is_course_instructor;
       const courseData = await this._courseRepository.getCourseById(courseId);
       const courseCreator = courseData.creator.id;
-      console.log(courseData.creator.id);
       if (
         userId &&
         (userRole === 'service_role' || courseOwner === true) &&
