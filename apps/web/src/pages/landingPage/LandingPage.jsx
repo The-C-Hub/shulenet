@@ -291,6 +291,96 @@ export default function YourComponent() {
         ))}
       </div>
 
+      {/* testimonials */}
+
+      <div className="w-full h-full relative flex flex-col items-center justify-center">
+        <div className="w-full max-w-screen-lg mt-5 mb-9">
+          <div className="relative w-full h-full flex flex-col md:flex-row items-center justify-center">
+            {/* First Div */}
+            <div className="w-full md:w-1/2 relative flex flex-col md:flex-row">
+              {/* First Div */}
+              <div className="w-full md:w-1/2 relative flex flex-col items-center justify-center">
+                {/* First Nested Div */}
+                <div className="w-full md:w-11/12 md:pr-4 relative bg-sky-950 bg-opacity-10 shadow rounded-lg p-5 mb-4">
+                  <img className="w-20 h-20 rounded-full mb-1" src="https://via.placeholder.com/120x120" alt="profile icon" />
+                  
+                  <div className="text-center text-black text-sm font-normal mb-2">
+                    <span className="text-yellow-400 text-3xl font-bold mb-1">“</span>
+                    Just Some Random text of an Alumni talking about Shulenet. Lorem Ipsum Dolor Asimet. I really love the school for some reason.
+                  </div>
+                  <div className="text-justify text-black text-base font-bold mb-1">
+                    Juma Antony
+                  </div>
+                  <div className="text-justify text-black text-sm font-semibold">
+                    Software Engineer
+                  </div>
+                </div>
+                {/* Second Nested Div */}
+                <div className="w-full md:w-11/12 relative mt-4 md:mt-0 md:pl-4 bg-sky-950 bg-opacity-10 shadow rounded-lg p-5 mt-4">
+                  <div className="text-center text-black text-sm font-normal mb-2">
+                    Just Some Random text of an Alumni talking about Shulenet. Lorem Ipsum Dolor Asimet. I really love the school for some reason.
+                  </div>
+                  <div className="text-justify text-black text-base font-bold mb-1">
+                    Juma Antony
+                  </div>
+                  <div className="text-justify text-black text-sm font-semibold">
+                    Software Engineer
+                  </div>
+                </div>
+              </div>
+
+              {/* Second Div */}
+              <div className="w-full md:w-1/2 relative">
+                {/* Third Nested Div */}
+                <div className="w-full h-1/3 md:w-11/12 md:pr-4 relative bg-sky-950 bg-opacity-10 shadow rounded-lg p-8 mb-4">
+                <div className="left-[100px] top-[30px] absolute text-justify text-black text-base font-bold font-['KoHo']">
+                  Rating
+                </div>
+                <div className="w-full md:w-[calc(100% - 20px)] left-[10px] top-[70px] relative text-center text-black text-base font-bold font-['KoHo']">
+                  5,000+ Students Satisfied by Our Services
+                </div>
+                <img className="w-[25px] h-[25px] left-[73px] top-[110px] absolute" src="https://via.placeholder.com/25x25" />
+                <img className="w-[25px] h-[25px] left-[181px] top-[110px] absolute" src="https://via.placeholder.com/25x25" />
+                <img className="w-[25px] h-[25px] left-[97px] top-[110px] absolute" src="https://via.placeholder.com/25x25" />
+                <img className="w-[25px] h-[25px] left-[125px] top-[110px] absolute" src="https://via.placeholder.com/25x25" />
+                <img className="w-[25px] h-[25px] left-[155px] top-[110px] absolute" src="https://via.placeholder.com/25x25" />
+              </div>
+
+                {/* Fourth Nested Div */}
+                <div className="w-full md:w-11/12 md:pr-4 relative mt-4 md:mt-0 bg-sky-950 bg-opacity-10 shadow rounded-lg p-8">
+                  <img className="w-20 h-20 rounded-full mb-2" src="https://via.placeholder.com/120x120" alt="profile icon" />
+                  
+                  <div className="text-center text-black text-sm font-normal mb-3">
+                  <span className="text-yellow-400 text-3xl font-bold mb-1">“</span>
+                    Just Some Random text of an Alumni talking about Shulenet. Lorem Ipsum Dolor Asimet. I really love the school for some reason.
+                  </div>
+                  <div className="text-justify text-black text-base font-bold mb-2">
+                    Juma Antony
+                  </div>
+                  <div className="text-justify text-black text-sm font-semibold">
+                    Software Engineer
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            {/* Second Div */}
+            <div className="w-full md:w-1/2 mt-4 md:mt-0 relative bg-blue-950 rounded-lg">
+              <div className="w-full h-full bg-sky-950 bg-opacity-10 shadow-md rounded-lg p-8">
+                <div className="w-full mt-12 text-white text-2xl font-bold">TESTIMONIALS</div>
+                <div className="w-full mt-4 text-yellow-400 text-2xl font-bold">What Says Our Alumni</div>
+                <p className="w-full mt-8 text-white text-base font-bold">
+                  Shulenet has nutured and Taught Students from diverse backgrounds who have excelled exceptionally and proceeded to greater heights to pursue different professions
+                </p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
       <Footer />
     </>
   );

@@ -3,7 +3,7 @@ import Logo from './Group 3 1.svg'; // Adjust the path based on your file struct
 
 const Header = () => {
   return (
-    <div className="container mx-auto h-20 bg-black flex items-center justify-between">
+    <div className="container mx-auto h-20 bg-black bg-opacity-90 flex items-center justify-between">
       <div className="flex items-center space-x-4"> 
       <div className="w-4" />
         <img src={Logo} alt="Logo" className="w-20 h-20" /> 
