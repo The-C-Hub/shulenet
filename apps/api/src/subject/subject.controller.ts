@@ -154,47 +154,47 @@ export class SubjectController {
     return response;
   }
 
-  @Patch(':subjectId')
-  @HttpCode(HttpStatus.OK)
-  @ApiBearerAuth()
-  @ApiOperation({
-    summary: 'Update a subject  -  Only Admins Can Update a Subject',
-  })
-  @ApiBody({ type: CreateSubjectDto })
-  @ApiResponse({
-    status: HttpStatus.OK,
-    description: 'The subject has been successfully updated',
-    content: {
-      'application/json': {
-        example: createSubjectResponseExample,
-      },
-    },
-  })
-  @UseGuards(IsAdminGuard)
-  public async updateSubject(
-    @Param('subjectId') subjectId: string,
-    @Body() subjectDto: ISubjectUpdate,
-  ): Promise<Subject> {
-    const response = await this._courseService.updateSubject(
-      subjectId,
-      subjectDto,
-    );
-    return response;
-  }
+  // @Patch(':subjectId')
+  // @HttpCode(HttpStatus.OK)
+  // @ApiBearerAuth()
+  // @ApiOperation({
+  //   summary: 'Update a subject  -  Only Admins Can Update a Subject',
+  // })
+  // @ApiBody({ type: CreateSubjectDto })
+  // @ApiResponse({
+  //   status: HttpStatus.OK,
+  //   description: 'The subject has been successfully updated',
+  //   content: {
+  //     'application/json': {
+  //       example: createSubjectResponseExample,
+  //     },
+  //   },
+  // })
+  // @UseGuards(IsAdminGuard)
+  // public async updateSubject(
+  //   @Param('subjectId') subjectId: string,
+  //   @Body() subjectDto: ISubjectUpdate,
+  // ): Promise<Subject> {
+  //   const response = await this._courseService.updateSubject(
+  //     subjectId,
+  //     subjectDto,
+  //   );
+  //   return response;
+  // }
 
-  @Delete(':subjectId')
-  @HttpCode(HttpStatus.NO_CONTENT)
-  @ApiBearerAuth()
-  @ApiOperation({
-    summary: 'Delete a subject  -  Only Admins Can Delete a Subject',
-  })
-  @ApiResponse({
-    status: HttpStatus.NO_CONTENT,
-  })
-  @UseGuards(IsAdminGuard)
-  public async deleteSubject(
-    @Param('subjectId') subjectId: string,
-  ): Promise<void> {
-    await this._courseService.deleteSubject(subjectId);
-  }
+  // @Delete(':subjectId')
+  // @HttpCode(HttpStatus.NO_CONTENT)
+  // @ApiBearerAuth()
+  // @ApiOperation({
+  //   summary: 'Delete a subject  -  Only Admins Can Delete a Subject',
+  // })
+  // @ApiResponse({
+  //   status: HttpStatus.NO_CONTENT,
+  // })
+  // @UseGuards(IsAdminGuard)
+  // public async deleteSubject(
+  //   @Param('subjectId') subjectId: string,
+  // ): Promise<void> {
+  //   await this._courseService.deleteSubject(subjectId);
+  // }
 }
