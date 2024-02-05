@@ -7,42 +7,36 @@ on:
     branches:
       - main
 
-jobs:
-  deploy:
+env:
+  PROJECT_ID: liquid-folio-411711
+  REGION: us-central1
+  GAR_LOCATION: us-central1-docker.pkg.dev/liquid-folio-411711/test1/
+
+job:
+  build-push-artifact:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+      - name: "Checkout"
+        uses: "actions/checkout@v3"
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
+      - id: "auth"
+          uses: "google-github-actions/auth@v1"
+          with:
+            credentials_json: "${{ secrets.SERVICE_ACCOUNT_KEY }}"
 
-    - name: Install Dependencies
-      run: yarn install
+      - name: "Set up Cloud SDK"
+        uses: "google-github-actions/setup-gcloud@v1"
 
-    - name: Build and Push Docker Image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        file: apps/api/Dockerfile .
-        push: true
-        tags: us-central1-docker.pkg.dev/$GOOGLE_PROJECT_ID/api:$GITHUB_SHA
+      - name: "Use gcloud CLI"
+        run: "gcloud info"
 
-    - name: Configure Docker Credentials
-      run: |
-        echo $SERVICE_ACCOUNT_KEY | base64 --decode > ./gcp-key.json
-        gcloud auth activate-service-account --key-file=./gcp-key.json
-        gcloud auth configure-docker
+      - name: "Docker auth"
+        run: |-
+          gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
 
-    - name: Deploy to Cloud Run
-      run: |
-        gcloud run deploy testservice \
-          --image us-central1-docker.pkg.dev/$GOOGLE_PROJECT_ID/api:$GITHUB_SHA \
-          --platform managed \
-          --region $GCP_REGION \
-          --allow-unauthenticated
+      - name: Build image
+        run: docker build . --file apps/api/Dockerfile  --tag ${{ env.GAR_LOCATION }}
+        working-directory: WORKING_DIRECTORY
+
+      - name: Push image
+        run: docker push ${{ env.GAR_LOCATION }}
