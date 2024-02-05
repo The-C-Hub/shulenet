@@ -10,22 +10,24 @@ on:
 env:
   PROJECT_ID: liquid-folio-411711
   REGION: us-central1
-  GAR_LOCATION: us-central1-docker.pkg.dev/liquid-folio-411711/test1/
+  GAR_LOCATION: us-central1-docker.pkg.dev/liquid-folio-411711/test1
+  IMAGE_NAME: api
+  IMAGE_TAG: latest
 
-job:
+jobs:
   build-push-artifact:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: "actions/checkout@v3"
+        uses: "actions/checkout@v2"
 
       - id: "auth"
-          uses: "google-github-actions/auth@v1"
-          with:
-            credentials_json: "${{ secrets.SERVICE_ACCOUNT_KEY }}"
+        uses: "google-github-actions/auth@v0.4.0"
+        with:
+          credentials_json: "${{ secrets.SERVICE_ACCOUNT_KEY }}"
 
       - name: "Set up Cloud SDK"
-        uses: "google-github-actions/setup-gcloud@v1"
+        uses: "google-github-actions/setup-gcloud@v0.2.1"
 
       - name: "Use gcloud CLI"
         run: "gcloud info"
@@ -35,8 +37,7 @@ job:
           gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
 
       - name: Build image
-        run: docker build . --file apps/api/Dockerfile  --tag ${{ env.GAR_LOCATION }}
-        working-directory: WORKING_DIRECTORY
+        run: docker build . --file Dockerfile  --tag ${{ env.GAR_LOCATION }}${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
       - name: Push image
-        run: docker push ${{ env.GAR_LOCATION }}
+        run: docker push ${{ env.GAR_LOCATION }}${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
