@@ -27,7 +27,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: apps/api/Dockerfile
+        file: ./apps/api/Dockerfile
         push: true
         tags: us-central1-docker.pkg.dev/$GOOGLE_PROJECT_ID/api:$GITHUB_SHA
 
