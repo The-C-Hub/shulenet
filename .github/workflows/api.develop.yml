@@ -43,3 +43,5 @@ jobs:
           --image gcr.io/$GOOGLE_PROJECT_ID/api:$GITHUB_SHA \
           --platform managed \
           --region $GCP_REGION
+
+		  
