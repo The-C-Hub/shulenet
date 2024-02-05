@@ -3,7 +3,7 @@ name: Google Cloud Deploy
 on:
   push:
     paths:
-      - 'apps/api/**'
+      - apps/api/**
     branches:
       - main
 
