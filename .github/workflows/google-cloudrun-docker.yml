@@ -69,9 +69,10 @@ jobs:
       - id: 'auth'
         name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@v0.4.0'
-        with:
-          workload_identity_provider: 'projects/592957739306/locations/global/workloadIdentityPools/test-pool/providers/test-provider'
-          service_account: 'github-actions@liquid-folio-411711.iam.gserviceaccount.com'
+          credentials_json: '${{ secrets.GCR_JSON_SA_KEY }}'
+        # with:
+        #   workload_identity_provider: 'projects/592957739306/locations/global/workloadIdentityPools/test-pool/providers/test-provider'
+        #   service_account: 'github-actions@liquid-folio-411711.iam.gserviceaccount.com'
 
       - name: Docker Auth
         id: docker-auth
