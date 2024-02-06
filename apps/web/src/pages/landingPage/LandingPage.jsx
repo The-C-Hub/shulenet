@@ -6,7 +6,8 @@ import bulbIcon from "../../images/bulbIcon.png";
 import booksIcon from "../../images/booksIcon.svg";
 import certIcon from "../../images/certificateIcon.svg";
 import practicalIcon from "../../images/practicalIcon.svg";
-import background2 from "../../images/background2.png";
+// import background2 from "../../images/background2.png";
+import background3 from "../../images/back.png"
 import geoLogo from "../../images/geoLogo.png";
 import labLogo from "../../images/labLogo.png";
 import mathLogo from "../../images/mathematicsLogo.png";
@@ -19,6 +20,7 @@ import chemLogo from "../../images/chemLogo.png";
 import userIcon from "../../images/user.svg";
 import trophyIcon from "../../images/cup.svg";
 import bookIcon from '../../images/book.svg';
+import starIcon from '../../images/star.png'
 
 const courseData = [
   {
@@ -102,6 +104,7 @@ export default function YourComponent() {
   return (
     <>
       <Header />
+
       <div
         className="w-full h-[70vh] bg-gradient-to-r from-black via-black to-black"
         style={{
@@ -193,33 +196,17 @@ export default function YourComponent() {
         </div>
 
         <div className="w-96 mt-4 rounded relative">
-          <div className="relative m-6">
-            <div className="w-[10rem] h-[13rem] absolute bg-sky-950 rounded-full" />
-            <div className="w-[20rem] h-[13rem] absolute left-10 top-7">
-              <div className="w-[20rem] h-[23rem] absolute bg-stone-300 rounded-[10px]" />
-              <img 
-                className="w-[350px] h-[573px] absolute rounded-[10px]" 
-                src={background2} 
-                alt="Background"
-               />              
-               <div className="w-[274px] h-[274px] absolute left-[249px] top-[306px] bg-blue-700 bg-opacity-80 rounded-full" />
-            </div>
-            <div className="w-[350px] h-[573px] absolute left-[66px] top-[38.50px]">
-              <img 
-                className="w-[350px] h-[573px] absolute rounded-[10px]" 
-                src={background2} 
-                alt="Background"
-               />
-              <div className="w-[274px] h-[274px] absolute left-[249px] top-[306px] bg-sky-950 bg-opacity-80 rounded-full" />
-              <div className="w-[300px] h-[300px] absolute left-[235px] top-[6rem] bg-black bg-opacity-0 rounded-full border-2 border-sky-950" />
-            </div>
+          <div className="static">
+            <div className="w-[120px] h-[150px] bg-blue-950 rounded-full absolute bottom-0 left-0" />
+            <img className="w-[200px] h-[300px] rounded-[10px] absolute top-[3rem] left-[4rem]" src={background3} alt="background hero" />
+            <div className="w-[190px] h-[190px] bg-sky-950 bg-opacity-80 absolute bottom-5 right-0 rounded-full" />
           </div>
         </div>
       </div>
 
             
       <div>
-        <div className="w-full  relative flex items-center justify-center">
+        <div className="w-full  relative flex items-center justify-center mt-9">
             <div className="w-full h-[66px] text-center text-black text-2xl font-bold font-['KoHo']">
                 Top Subjects Specifically Curated For You
             </div>
@@ -238,7 +225,7 @@ export default function YourComponent() {
             </div>
 
             <div className="flex flex-col items-center justify-center">
-                <div className="w-[10rem] h-[10rem] bg-zinc-300 bg-opacity-40 rounded-md shadow m-4 flex items-center justify-center">
+                <div className="w-[10rem] h-[10rem] bg-zinc-300 bg-opacity-40 rounded-md shadow ml-9 flex items-center justify-center">
                     <img 
                         className="w-[60%] h-[60%]" 
                         src={techLogo} 
@@ -249,7 +236,7 @@ export default function YourComponent() {
             </div>
 
             <div className="flex flex-col items-center justify-center">
-                <div className="w-[10rem] h-[10rem] bg-zinc-300 bg-opacity-40 rounded-md shadow m-4 flex items-center justify-center">
+                <div className="w-[10rem] h-[10rem] bg-zinc-300 bg-opacity-40 rounded-md shadow ml-9 flex items-center justify-center">
                     <img 
                         className="w-[60%] h-[60%]" 
                         src={geoLogo} 
@@ -260,7 +247,7 @@ export default function YourComponent() {
             </div>
 
             <div className="flex flex-col items-center justify-center">
-                <div className="w-[10rem] h-[10rem] bg-zinc-300 bg-opacity-40 rounded-md shadow m-4 flex items-center justify-center">
+                <div className="w-[10rem] h-[10rem] bg-zinc-300 bg-opacity-40 rounded-md shadow ml-9 flex items-center justify-center">
                     <img 
                         className="w-[60%] h-[60%]" 
                         src={langLogo}
@@ -271,7 +258,7 @@ export default function YourComponent() {
             </div>
 
             <div className="flex flex-col items-center justify-center">
-                <div className="w-[10rem] h-[10rem] bg-zinc-300 bg-opacity-40 rounded-md shadow m-4 flex items-center justify-center">
+                <div className="w-[10rem] h-[10rem] bg-zinc-300 bg-opacity-40 rounded-md shadow ml-9 flex items-center justify-center">
                     <img 
                         className="w-[60%] h-[60%]" 
                         src={labLogo} 
@@ -283,13 +270,25 @@ export default function YourComponent() {
         </div>
       </div>
 
+      <div>
+          <div className="text text-black text-lg font-bold font-['KoHo'] mt-9 pl-9">
+            Learners Like You Are Viewing
+          </div>
+
+          <div className="text-right text-black text-base font-bold font-['KoHo'] underline pr-4">
+            View More
+          </div>
+      </div>
+
       <div className="flex justify-around flex-wrap">
+        
         {courseData.map((course) => (
           <div key={course.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 mb-4 px-4">
             {renderCourseCard(course)}
           </div>
         ))}
       </div>
+      
 
       {/* testimonials */}
 
@@ -336,14 +335,15 @@ export default function YourComponent() {
                 <div className="left-[100px] top-[30px] absolute text-justify text-black text-base font-bold font-['KoHo']">
                   Rating
                 </div>
+                <img className="w-[20px] h-[20px] left-[63px] top-[70px] absolute" src={starIcon} alt="star"/>
+                <img className="w-[20px] h-[20px] left-[171px] top-[70px] absolute" src={starIcon} alt="star"/>
+                <img className="w-[20px] h-[20px] left-[87px] top-[70px] absolute" src={starIcon} alt="star"/>
+                <img className="w-[20px] h-[20px] left-[115px] top-[70px] absolute" src={starIcon} alt="star"/>
+                <img className="w-[20px] h-[20px] left-[145px] top-[70px] absolute" src={starIcon} alt="star"/>
                 <div className="w-full md:w-[calc(100% - 20px)] left-[10px] top-[70px] relative text-center text-black text-base font-bold font-['KoHo']">
                   5,000+ Students Satisfied by Our Services
                 </div>
-                <img className="w-[25px] h-[25px] left-[73px] top-[110px] absolute" src="https://via.placeholder.com/25x25" />
-                <img className="w-[25px] h-[25px] left-[181px] top-[110px] absolute" src="https://via.placeholder.com/25x25" />
-                <img className="w-[25px] h-[25px] left-[97px] top-[110px] absolute" src="https://via.placeholder.com/25x25" />
-                <img className="w-[25px] h-[25px] left-[125px] top-[110px] absolute" src="https://via.placeholder.com/25x25" />
-                <img className="w-[25px] h-[25px] left-[155px] top-[110px] absolute" src="https://via.placeholder.com/25x25" />
+                
               </div>
 
                 {/* Fourth Nested Div */}

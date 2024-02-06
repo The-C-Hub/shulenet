@@ -6,13 +6,13 @@ const Header = () => {
     <div className="container mx-auto h-20 bg-black bg-opacity-90 flex items-center justify-between">
       <div className="flex items-center space-x-4"> 
       <div className="w-4" />
-        <img src={Logo} alt="Logo" className="w-20 h-20" /> 
+        <img src={Logo} alt="Logo" className="w-20 h-20 pl-3" /> 
         <div className="w-[138.75px] h-[43.83px] relative flex-col justify-start items-start inline-flex" />
-        <NavItem text="Courses" />
+        <NavItem className="pl-2" text="Courses" />
         <NavItem text="Why Us" />
       </div>
       <div className="flex space-x-4 items-center"> 
-      <NavItem text="Become an Instructor" />
+      <NavItem className="mr-3" text="Become an Instructor" />
 
         <AuthButton text="Sign In" bgColor="bg-white" textColor="text-sky-950" />
         <AuthButton text="Sign Up" bgColor="bg-sky-950" textColor="text-yellow-400" />
