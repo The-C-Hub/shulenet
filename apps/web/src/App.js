@@ -1,9 +1,11 @@
 
 import React from 'react'
-import Header from './components/header/Header'
+import LandingPage from './pages/landingPage/LandingPage'
 
 export default function App() {
   return (
-    <Header />
+    <>
+    <LandingPage />
+    </>
   )
 }
