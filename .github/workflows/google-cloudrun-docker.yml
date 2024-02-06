@@ -72,8 +72,8 @@ jobs:
         uses: 'google-github-actions/auth@v0'
         with:
           token_format: 'access_token'
-          workload_identity_provider: 'https://iam.googleapis.com/projects/592957739306/locations/global/workloadIdentityPools/github-auth/providers/github-auth'
-          service_account: 'github-action@liquid-folio-411711.iam.gserviceaccount.com'
+          workload_identity_provider: 'projects/592957739306/locations/global/workloadIdentityPools/github-auth/providers/github-auth'
+          service_account: "github-actions@liquid-folio-411711.iam.gserviceaccount.com"
 
       - name: Docker Auth
         id: docker-auth
