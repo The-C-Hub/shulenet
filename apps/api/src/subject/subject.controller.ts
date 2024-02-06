@@ -182,19 +182,19 @@ export class SubjectController {
   //   return response;
   // }
 
-  // @Delete(':subjectId')
-  // @HttpCode(HttpStatus.NO_CONTENT)
-  // @ApiBearerAuth()
-  // @ApiOperation({
-  //   summary: 'Delete a subject  -  Only Admins Can Delete a Subject',
-  // })
-  // @ApiResponse({
-  //   status: HttpStatus.NO_CONTENT,
-  // })
-  // @UseGuards(IsAdminGuard)
-  // public async deleteSubject(
-  //   @Param('subjectId') subjectId: string,
-  // ): Promise<void> {
-  //   await this._courseService.deleteSubject(subjectId);
-  // }
+  @Delete(':subjectId')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiBearerAuth()
+  @ApiOperation({
+    summary: 'Delete a subject  -  Only Admins Can Delete a Subject',
+  })
+  @ApiResponse({
+    status: HttpStatus.NO_CONTENT,
+  })
+  @UseGuards(IsAdminGuard)
+  public async deleteSubject(
+    @Param('subjectId') subjectId: string,
+  ): Promise<void> {
+    await this._courseService.deleteSubject(subjectId);
+  }
 }
