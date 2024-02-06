@@ -64,16 +64,18 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: 'actions/checkout@v4'
 
-      - name: Google Auth
-        id: auth
-        uses: 'google-github-actions/auth@v0'
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v2'
         with:
-          token_format: 'access_token'
-          workload_identity_provider: 'projects/592957739306/locations/global/workloadIdentityPools/github-auth/providers/github-auth'
-          service_account: "github-actions@liquid-folio-411711.iam.gserviceaccount.com"
+          project_id: 'my-project'
+          workload_identity_provider: 'projects/592957739306/locations/global/workloadIdentityPools/test-pool/providers/test-provider'
+        # uses: 'google-github-actions/auth@v0.4.0'
+        # with:
+        #   workload_identity_provider: 'projects/592957739306/locations/global/workloadIdentityPools/test-pool/providers/test-provider'
+          # service_account: 'github-actions@liquid-folio-411711.iam.gserviceaccount.com'
 
       - name: Docker Auth
         id: docker-auth
