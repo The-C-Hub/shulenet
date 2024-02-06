@@ -57,7 +57,7 @@ env:
   REGION: uscentral-1
 
 jobs:
-  deploy:
+  job_id:
     permissions:
       contents: 'read'
       id-token: 'write'
@@ -70,10 +70,8 @@ jobs:
         name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@v0.4.0'
         with:
-          credentials_json: '${{ secrets.GCR_JSON_SA_KEY }}'
-        # with:
-        #   workload_identity_provider: 'projects/592957739306/locations/global/workloadIdentityPools/test-pool/providers/test-provider'
-        #   service_account: 'github-actions@liquid-folio-411711.iam.gserviceaccount.com'
+          workload_identity_provider: 'projects/592957739306/locations/global/workloadIdentityPools/test-pool/providers/test-provider'
+          service_account: 'github-actions@liquid-folio-411711.iam.gserviceaccount.com'
 
       - name: Docker Auth
         id: docker-auth
@@ -91,10 +89,9 @@ jobs:
 
       - name: Deploy to Cloud Run
         id: deploy
-        uses: google-github-actions/deploy-cloudrun@v0
+        uses: google-github-actions/deploy-cloudrun@v0.2.0
         with:
           service: ${{ env.SERVICE }}
-          region: ${{ env.REGION }}
           image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}
 
       - name: Show Output
