@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserRepository } from '@user/user.respository';
+import { UserRepository } from '@user/user.repository';
 import { Profile } from '@user/entities/profile.entity';
 import { MediaService } from '@common/media/media.service';
 import { IUserUpdate } from '@user/interface/user.interface';

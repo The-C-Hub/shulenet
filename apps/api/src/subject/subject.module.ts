@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Subject } from '@subject/entities/subject.entity';
 import { Profile } from '@user/entities/profile.entity';
 import { SubjectRepository } from '@subject/subject.repository';
-import { UserRepository } from '@user/user.respository';
+import { UserRepository } from '@user/user.repository';
 import { MediaModule } from '@common/media/media.module';
 
 @Module({
