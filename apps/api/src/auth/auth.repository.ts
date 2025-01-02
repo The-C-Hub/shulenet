@@ -66,7 +66,7 @@ export class AuthRepository {
           is_course_instructor: true,
         },
         redirectTo:
-          'http://localhost:3001/api#/Auth/AuthController_emailChangePassword',
+          'http://localhost:3000/api#/Auth/AuthController_emailChangePassword',
       });
     if (error) {
       throw new BaseException(error.message, error.status);

@@ -17,4 +17,12 @@ export class UpdateUserDetailsDto {
   @IsString()
   @IsOptional()
   username: string;
+
+  @ApiProperty({
+    type: 'string',
+    format: 'binary',
+    description: 'Profile photo of the case',
+  })
+  @IsOptional()
+  profile_picture: Express.Multer.File;
 }

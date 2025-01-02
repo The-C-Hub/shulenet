@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { extractTokenFromHeader } from '@common/token/extract-token';
 import { decodeToken } from '@common/token/decode-token';
-import { UserRepository } from '@user/user.respository';
+import { UserRepository } from '@user/user.repository';
 import { BaseException } from '@common/exceptions/base.exception';
 
 @Injectable()
