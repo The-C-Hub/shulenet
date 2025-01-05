@@ -54,10 +54,12 @@ export class UserRepository {
   public async updateUserDetails(
     userId: string,
     updateUserDetailsDto: Partial<IUserUpdate>,
+    photoUrl?: string,
   ): Promise<Profile> {
     try {
       const updatedProfile = await this._userRepository.preload({
         id: userId,
+        profile_photo_url: photoUrl,
         ...updateUserDetailsDto,
       });
       return this._userRepository.save(updatedProfile);

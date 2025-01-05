@@ -30,7 +30,6 @@ import { ValidateEmailDto } from '@auth/dto/validate-email.dto';
 import { IsAdminGuard } from '@common/guards/is-admin.guard';
 
 @ApiTags('Auth')
-@ApiBearerAuth()
 @Controller({ path: 'auth', version: '1' })
 export class AuthController {
   constructor(private readonly _authService: AuthService) {}

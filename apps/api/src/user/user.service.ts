@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { UserRepository } from '@user/user.respository';
+import { UserRepository } from '@user/user.repository';
 import { Profile } from '@user/entities/profile.entity';
 import { MediaService } from '@common/media/media.service';
 import { IUserUpdate } from '@user/interface/user.interface';
+import { PROFILE_PHOTO_STORAGE_BUCKET_NAME } from '@common/media/media.constants';
 
 @Injectable()
 export class UserService {
@@ -26,11 +27,14 @@ export class UserService {
   public async updateUserDetails(
     userId: string,
     updateUserDetailsDto: IUserUpdate,
+    profilePhoto: Express.Multer.File,
   ): Promise<Profile> {
-    await this._userRepository.findUserById(userId);
+    const profilePhotoUrl = await this.uploadProfileImage(userId, PROFILE_PHOTO_STORAGE_BUCKET_NAME, profilePhoto);
+    const photoUrl = profilePhotoUrl.publicUrl;
     return await this._userRepository.updateUserDetails(
       userId,
       updateUserDetailsDto,
+      photoUrl,
     );
   }
 
@@ -45,9 +49,6 @@ export class UserService {
       storageBucketName,
       file,
     );
-    await this._userRepository.updateUserDetails(userId, {
-      profile_photo_url: response.publicUrl,
-    });
     return response;
   }
 }
