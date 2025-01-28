@@ -9,7 +9,7 @@
 	"scripts": {
 		"build": "turbo run build",
 		"dev": "turbo run dev",
-		"start:dev": "turbo run start:dev",
+		"start:dev": "cross-env NODE_ENV=development nest start --watch",
 		"lint": "turbo run lint",
 		"test": "turbo run test",
 		"test:e2e": "turbo run test:e2e",
